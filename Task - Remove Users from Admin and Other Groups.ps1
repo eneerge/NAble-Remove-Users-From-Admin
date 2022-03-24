@@ -61,7 +61,8 @@ function RemoveUsersFromGroup($groupName,$usersToIgnore = @()) {
 RemoveUsersFromGroup -groupName "Access Control Assistance Operators"
 
 # Exclude the built in administrator account (error is thrown if you attempt to remove it)
-RemoveUsersFromGroup -groupName "Administrators" -usersToIgnore @("Administrator")
+# Also excludes any accounts starting with "tadmin" so it will work with the LAPS script I wrote here https://github.com/eneerge/NAble-LAPS-LocalAdmin-Password-Rotation
+RemoveUsersFromGroup -groupName "Administrators" -usersToIgnore @("Administrator","tadmin*")
 
 RemoveUsersFromGroup -groupName "Backup Operators"
 RemoveUsersFromGroup -groupName "Cryptographic Operators"
